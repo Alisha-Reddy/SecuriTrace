@@ -71,7 +71,7 @@ export const TrackingProvider = ({ children }) => {
         try {
             if (!window.ethereum) return "Install MetaMask";
             const accounts = await window.ethereum.request({
-                method: "eth_accounts",
+                method: "eth_requestAccounts",
             });
 
             const provider = new ethers.providers.JsonRpcProvider();
@@ -92,7 +92,7 @@ export const TrackingProvider = ({ children }) => {
             if (!window.ethereum) return "Install Metamask";
 
             const accounts = await window.ethereum.request({
-                method: "eth_accounts",
+                method: "eth_requestAccounts",
             })
             const web3Modal = new Web3Modal();
             const connection = await web3Modal.connect();
@@ -120,7 +120,7 @@ export const TrackingProvider = ({ children }) => {
             if (!window.ethereum) return "Install Metamask";
 
             const accounts = await window.ethereum.request({
-                method: "eth_accounts",
+                method: "eth_requestAccounts",
             })
             const provider = new ethers.providers.JsonRpcProvider();
             const contract = fetchContract(provider);
@@ -150,7 +150,7 @@ export const TrackingProvider = ({ children }) => {
             if (!window.ethereum) return "Install Metamask";
 
             const accounts = await window.ethereum.request({
-                method: "eth_accounts",
+                method: "eth_requestAccounts",
             });
 
             const web3Modal = new Web3Modal();
@@ -178,7 +178,7 @@ export const TrackingProvider = ({ children }) => {
             if (!window.ethereum) return "Tnstall Metamask";
 
             const accounts = await window.ethereum.request({
-                method: "eth_accounts",
+                method: "eth_requestAccounts",
             })
 
             if (accounts.length) {
@@ -197,11 +197,11 @@ export const TrackingProvider = ({ children }) => {
             if (!window.ethereum) return "Install Metamask";
 
             const accounts = await window.ethereum.request({
-                method: "eth_accounts",
+                method: "eth_requestAccounts",
             })
             setCurrentUser(accounts[0]);
         } catch (error) {
-            return "Somethisng went wrong";
+            return "Something went wrong";
         }
     }
 
