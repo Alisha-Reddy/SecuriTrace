@@ -3,7 +3,8 @@ import Web3Modal from "web3modal";
 import { ethers } from "ethers";
 
 // INTERNAL IMPORTS
-import tracking from "../Context/Tracking.json";
+import tracking from "../Context/Tracking.json"
+// import tracking from "../Context/Tracking.json"
 const ContractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
 const ContractABI = tracking.abi;
 
@@ -47,16 +48,23 @@ export const TrackingProvider = ({ children }) => {
 
     const getAllShipment = async () => {
         try {
-            const provider = new ethers.providers.JsonRpcProvider();
-            const contract = fetchContract(provider);
+            console.log("1")
+            const provider = new ethers.providers.JsonRpcProvider("https://eth-mainnet.g.alchemy.com/v2/ErVq1VJ9pedwYuXG8L_WGfru6tpp-VxV")
+            // const contract = fetchContract(provider);
+             const contract = new ethers.Contract(ContractAddress,ContractABI, provider)
+            
 
+
+            console.log("2")
             const shipments = await contract.getAllTransactions();
+            console.log("3")
             const allShipments = shipments.map((shipment) => ({
                 sender: shipment.sender,
                 receiver: shipment.receiver,
                 price: ethers.utils.formatEther(shipment.price.toString()),
                 pickupTime: shipment.pickupTime.toNumber(),
                 deliveryTime: shipment.deliveryTime.toNumber(),
+                distance: shipment.distance.toNumber(),
                 isPaid: shipment.isPaid,
                 status: shipment.status,
             }));
@@ -74,7 +82,7 @@ export const TrackingProvider = ({ children }) => {
                 method: "eth_requestAccounts",
             });
 
-            const provider = new ethers.providers.JsonRpcProvider();
+            const provider = new ethers.providers.JsonRpcProvider(`https://eth-mainnet.g.alchemy.com/v2/ErVq1VJ9pedwYuXG8L_WGfru6tpp-VxV`);
             const contract = fetchContract(provider);
             const shipmentsCount = await contract.getShipmentsCount(accounts[0]);
             return shipmentsCount.toNumber();
@@ -122,7 +130,7 @@ export const TrackingProvider = ({ children }) => {
             const accounts = await window.ethereum.request({
                 method: "eth_requestAccounts",
             })
-            const provider = new ethers.providers.JsonRpcProvider();
+            const provider = new ethers.providers.JsonRpcProvider(`https://eth-mainnet.g.alchemy.com/v2/ErVq1VJ9pedwYuXG8L_WGfru6tpp-VxV`);
             const contract = fetchContract(provider);
             const shipment = await contract.getShipment(accounts[0], index * 1);
 

@@ -11,7 +11,7 @@ contract Tracking {
     struct Shipment {
         address sender;
         address receiver;
-        uint256 pickUpTime;
+        uint256 pickupTime;
         uint256 deliveryTime;
         uint256 distance;
         uint256 price;
@@ -25,7 +25,7 @@ contract Tracking {
     struct TypeShipment {
         address sender;
         address receiver;
-        uint256 pickUpTime;
+        uint256 pickupTime;
         uint256 deliveryTime;
         uint256 distance;
         uint256 price;
@@ -37,11 +37,11 @@ contract Tracking {
     event ShipmentCreated(
         address indexed sender,
         address indexed receiver,
-        uint256 pickUpTime,
+        uint256 pickupTime,
         uint256 distance,
         uint256 price
     );
-    event ShipmentInTransit(address indexed sender, address indexed receiver, uint256 pickUpTime);
+    event ShipmentInTransit(address indexed sender, address indexed receiver, uint256 pickupTime);
     event ShipmentDelivered(address indexed sender, address indexed receiver, uint256 deliveryTime);
     event ShipmentPaid(address indexed sender, address indexed receiver, uint256 amount);
 
@@ -51,7 +51,7 @@ contract Tracking {
 
     function createShipment(
         address _receiver,
-        uint256 _pickUpTime,
+        uint256 _pickupTime,
         uint256 _distance,
         uint256 _price
     ) public payable {
@@ -60,7 +60,7 @@ contract Tracking {
         Shipment memory shipment = Shipment(
             msg.sender,
             _receiver,
-            _pickUpTime,
+            _pickupTime,
             0,
             _distance,
             _price,
@@ -75,7 +75,7 @@ contract Tracking {
             TypeShipment(
                 msg.sender,
                 _receiver,
-                _pickUpTime,
+                _pickupTime,
                 0,
                 _distance,
                 _price,
@@ -84,7 +84,7 @@ contract Tracking {
             )
         );
 
-        emit ShipmentCreated(msg.sender, _receiver, _pickUpTime, _distance, _price);
+        emit ShipmentCreated(msg.sender, _receiver, _pickupTime, _distance, _price);
     }
 
     function startShipment(address _sender, address _receiver, uint256 _index) public {
@@ -97,7 +97,7 @@ contract Tracking {
         shipment.status = ShipmentStatus.IN_TRANSIT;
         typeShipment.status = ShipmentStatus.IN_TRANSIT;
 
-        emit ShipmentInTransit(_sender, _receiver, shipment.pickUpTime);
+        emit ShipmentInTransit(_sender, _receiver, shipment.pickupTime);
     }
 
     function completeShipment(address _sender, address _receiver, uint256 _index) public {
@@ -136,7 +136,7 @@ contract Tracking {
         return (
             shipment.sender,
             shipment.receiver,
-            shipment.pickUpTime,
+            shipment.pickupTime,
             shipment.deliveryTime,
             shipment.distance,
             shipment.price,

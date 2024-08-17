@@ -25,7 +25,7 @@ const index = () => {
   } = useContext(TrackingContext);
 
   // STATE VARIABLE
-  const [createShipmentModel, setCraeteShipmentModel] = useState(false);
+  const [createShipmentModel, setCreateShipmentModel] = useState(false);
   const [openProfile, setOpenProfile] = useState(false)
   const [startModel, setStartModel] = useState(false)
   const [completeModel, setCompleteModel] = useState(false);
@@ -52,13 +52,13 @@ const index = () => {
         setStartModel={setStartModel}
       />
       <Table
-        setCraeteShipmentModel={setCraeteShipmentModel}
+        setCreateShipmentModel={setCreateShipmentModel}
         allShipmentsdata={allShipmentsdata}
       />
       <Form
         createShipmentModel={createShipmentModel}
         createShipment={createShipment}
-        setCraeteShipmentModel={setCraeteShipmentModel}
+        setCreateShipmentModel={setCreateShipmentModel}
       />
       <Profile
         openProfile={openProfile}

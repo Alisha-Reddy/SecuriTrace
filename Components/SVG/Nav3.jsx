@@ -1,9 +1,27 @@
-import React from 'react'
-
+import React from "react"
 const Nav3 = () => {
-  return (
-    <div>Nav3</div>
-  )
+    return (
+        <svg
+            fill="white"
+            version="1.1"
+            id="Capa_1"
+			xmlns="http://www.w3.org/2000/svg"
+			className="w-3 h-3 mx-auto mt-0.5 ml-1"
+            width="800px"
+            height="800px"
+            viewBox="0 0 103.536 103.536"
+        >
+            <g>
+                <g>
+                    <path
+                        d="M0.65,91.928c1.221,2.701,3.881,4.3,6.665,4.3c1.006,0,2.029-0.209,3.006-0.65l88.917-40.195
+			c2.688-1.216,4.381-3.925,4.295-6.873c-0.085-2.948-1.934-5.554-4.687-6.609L9.929,7.794C6.17,6.352,1.933,8.23,0.489,12.001
+			c-1.447,3.769,0.438,7.995,4.207,9.44l72.569,27.834L4.299,82.255C0.62,83.92-1.012,88.249,0.65,91.928z"
+                    />
+                </g>
+            </g>
+        </svg>
+    )
 }
 
-export default Nav3
+export default Nav3;

@@ -32,26 +32,26 @@ export default () => {
                         </p>
                         <ul className="flex felx-wrap items-center gap-4 text-sm sm:text-base">
                             {footerNavs.map((item, idx) => {
-                              return (
-                                <li className="text-gray-800 hover:text-gray-500 duration-150">
-                                    <a key={idx} href={item.href}>
-                                        {item.name}
-                                    </a>
-                                </li>
+                                return (
+                                    <li className="text-gray-800 hover:text-gray-500 duration-150">
+                                        <a key={idx} href={item.href}>
+                                            {item.name}
+                                        </a>
+                                    </li>
                                 )
                             })}
                         </ul>
                     </div>
                     <div className="mt-6">
                         <p className="text-gray-700 font-semibold">Get the app</p>
-                        <div className="flex items-center gap-3 mt-3 sm:block">
-                            <a href="javascript:void()">
-                  <Fot1></Fot1> 
-                  {/* Google play icon */}
+                        <div className="flex items-center gap-3 mt-0 ">
+                            <a href="javascript:void(0)" className="mt-0 block sm:mt-3">
+                                <Fot1></Fot1>
+                                {/* Google play icon */}
                             </a>
-                            <a href="javascript:void()" className="mt-0 block sm:mt-3">
-                  <Fot2></Fot2>
-                  {/* App store icon */}
+                            <a href="javascript:void(0)" className="mt-0 block sm:mt-3">
+                                <Fot2></Fot2>
+                                {/* App store icon */}
                             </a>
                         </div>
                     </div>
