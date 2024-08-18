@@ -35,17 +35,12 @@ const Fot2 = () => {
                     y2="61.386"
                     gradientTransform="matrix(4.0022 0 0 4.0011 191.95 -349.736)"
                 >
-                    <stop offset="0" stop-color="#1a1a1a" stop-opacity=".1" />
-
-                    <stop offset=".123" stop-color="#212121" stop-opacity=".151" />
-
-                    <stop offset=".308" stop-color="#353535" stop-opacity=".227" />
-
-                    <stop offset=".532" stop-color="#575757" stop-opacity=".318" />
-
-                    <stop offset=".783" stop-color="#858585" stop-opacity=".421" />
-
-                    <stop offset="1" stop-color="#b3b3b3" stop-opacity=".51" />
+                    <stop offset="0" stopColor="#1a1a1a" stopOpacity=".1" />
+                    <stop offset=".123" stopColor="#212121" stopOpacity=".151" />
+                    <stop offset=".308" stopColor="#353535" stopOpacity=".227" />
+                    <stop offset=".532" stopColor="#575757" stopOpacity=".318" />
+                    <stop offset=".783" stopColor="#858585" stopOpacity=".421" />
+                    <stop offset="1" stopColor="#b3b3b3" stopOpacity=".51" />
                 </linearGradient>
 
                 <path

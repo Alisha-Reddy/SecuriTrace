@@ -30,7 +30,7 @@ export default () => {
         >
             <div className="gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8">
                 <div className="felx items-center justify-between py-5 md:block">
-                    <a href="javascript:void(0)">
+                    <a href="#">
                         <img
                             src="https://floatui.com/logo.svg"
                             width={120}

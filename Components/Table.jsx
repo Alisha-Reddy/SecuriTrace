@@ -25,7 +25,7 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
                 <div className="mt-3 md:mt-0">
                     <p
                         onClick={() => setCreateShipmentModel(true)}
-                        href="javascript:void(0)"
+                        href="#"
                         className="inline-block px-4 py-2 text-white duration-150 font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 md:text-sm rounded-lg md:inline-flex"
                     >
                         {" "}

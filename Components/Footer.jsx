@@ -3,19 +3,19 @@ import { Fot1, Fot2 } from "../Components/index"
 export default () => {
     const footerNavs = [
         {
-            href: "javascript:void()",
+            href: "#",
             name: "Terms",
         },
         {
-            href: "javascript:void()",
+            href: "#",
             name: "License",
         },
         {
-            href: "javascript:void()",
+            href: "#",
             name: "Privacy",
         },
         {
-            href: "javascript:void()",
+            href: "#",
             name: "About us",
         },
     ]
@@ -33,8 +33,8 @@ export default () => {
                         <ul className="flex felx-wrap items-center gap-4 text-sm sm:text-base">
                             {footerNavs.map((item, idx) => {
                                 return (
-                                    <li className="text-gray-800 hover:text-gray-500 duration-150">
-                                        <a key={idx} href={item.href}>
+                                    <li key={idx} className="text-gray-800 hover:text-gray-500 duration-150">
+                                        <a  href={item.href}>
                                             {item.name}
                                         </a>
                                     </li>
@@ -45,11 +45,11 @@ export default () => {
                     <div className="mt-6">
                         <p className="text-gray-700 font-semibold">Get the app</p>
                         <div className="flex items-center gap-3 mt-0 ">
-                            <a href="javascript:void(0)" className="mt-0 block sm:mt-3">
+                            <a href="#" className="mt-0 block sm:mt-3">
                                 <Fot1></Fot1>
                                 {/* Google play icon */}
                             </a>
-                            <a href="javascript:void(0)" className="mt-0 block sm:mt-3">
+                            <a href="#" className="mt-0 block sm:mt-3">
                                 <Fot2></Fot2>
                                 {/* App store icon */}
                             </a>

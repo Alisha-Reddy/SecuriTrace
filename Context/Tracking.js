@@ -4,9 +4,9 @@ import { ethers } from "ethers";
 
 // INTERNAL IMPORTS
 import tracking from "../Context/Tracking.json"
-// import tracking from "../Context/Tracking.json"
-const ContractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3";
+const ContractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
 const ContractABI = tracking.abi;
+const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 // FETCHING SMART CONTRACT
 const fetchContract = (signerOrProvider) =>
@@ -48,15 +48,31 @@ export const TrackingProvider = ({ children }) => {
 
     const getAllShipment = async () => {
         try {
-            console.log("1")
-            const provider = new ethers.providers.JsonRpcProvider("https://eth-mainnet.g.alchemy.com/v2/ErVq1VJ9pedwYuXG8L_WGfru6tpp-VxV")
+            // const provider = new ethers.providers.JsonRpcProvider()
+            // console.log(provider)
             // const contract = fetchContract(provider);
-             const contract = new ethers.Contract(ContractAddress,ContractABI, provider)
+            console.log("1")
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const signer = provider.getSigner()
+            const contract = new ethers.Contract(ContractAddress,ContractABI, signer)
             
-
-
             console.log("2")
-            const shipments = await contract.getAllTransactions();
+            await delay(2000)
+            const shipments = await contract.getAllTransactions()
+            
+            // const shipments = [
+            //     {
+            //         sender: "0xSenderAddress",
+            //         receiver: "0xReceiverAddress",
+            //         price: ethers.utils.parseEther("0.5"),
+            //         pickupTime: ethers.BigNumber.from(Math.floor(Date.now() / 1000)), // Convert to integer
+            //         deliveryTime: ethers.BigNumber.from(Math.floor((Date.now() + 3600) / 1000)), // Convert to integer
+            //         distance: ethers.BigNumber.from(100),
+            //         isPaid: true,
+            //         status: "Delivered",
+            //     },
+            // ]
+            await delay(2000)
             console.log("3")
             const allShipments = shipments.map((shipment) => ({
                 sender: shipment.sender,
@@ -82,8 +98,12 @@ export const TrackingProvider = ({ children }) => {
                 method: "eth_requestAccounts",
             });
 
-            const provider = new ethers.providers.JsonRpcProvider(`https://eth-mainnet.g.alchemy.com/v2/ErVq1VJ9pedwYuXG8L_WGfru6tpp-VxV`);
-            const contract = fetchContract(provider);
+            // const provider = new ethers.JsonRpcProvider(`https://eth-mainnet.g.alchemy.com/v2/ErVq1VJ9pedwYuXG8L_WGfru6tpp-VxV`);
+            // const contract = fetchContract(provider);
+
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const signer = provider.getSigner()
+            const contract = new ethers.Contract(ContractAddress, ContractABI, signer)
             const shipmentsCount = await contract.getShipmentsCount(accounts[0]);
             return shipmentsCount.toNumber();
         } catch (error) {
@@ -130,8 +150,12 @@ export const TrackingProvider = ({ children }) => {
             const accounts = await window.ethereum.request({
                 method: "eth_requestAccounts",
             })
-            const provider = new ethers.providers.JsonRpcProvider(`https://eth-mainnet.g.alchemy.com/v2/ErVq1VJ9pedwYuXG8L_WGfru6tpp-VxV`);
-            const contract = fetchContract(provider);
+            // const provider = new ethers.JsonRpcProvider(`https://eth-mainnet.g.alchemy.com/v2/ErVq1VJ9pedwYuXG8L_WGfru6tpp-VxV`);
+            // const contract = fetchContract(provider);
+
+            const provider = new ethers.providers.Web3Provider(window.ethereum)
+            const signer = provider.getSigner()
+            const contract = new ethers.Contract(ContractAddress, ContractABI, signer)
             const shipment = await contract.getShipment(accounts[0], index * 1);
 
             const SingleShipment = {
