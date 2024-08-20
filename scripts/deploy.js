@@ -6,7 +6,7 @@ async function main() {
 
     // await tracking.deploymentTransaction.wait() 
 
-    console.log(`Tracking deployed to ${tracking.target}`)
+    console.log(`Tracking deployed to ${tracking.address}`)
 }
 
 main().catch((error) => {

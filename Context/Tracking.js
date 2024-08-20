@@ -4,13 +4,14 @@ import { ethers } from "ethers";
 
 // INTERNAL IMPORTS
 import tracking from "../Context/Tracking.json"
-const ContractAddress = "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+const ContractAddress = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
 const ContractABI = tracking.abi;
-const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
+// const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms))
 
 // FETCHING SMART CONTRACT
 const fetchContract = (signerOrProvider) =>
     new ethers.Contract(ContractAddress, ContractABI, signerOrProvider);
+
 
 export const TrackingContext = React.createContext();
 
@@ -31,15 +32,16 @@ export const TrackingProvider = ({ children }) => {
             const signer = provider.getSigner();
             const contract = fetchContract(signer);
             const createItem = await contract.createShipment(
-                receiver, 
+                receiver,
                 new Date(pickupTime).getTime(),
                 distance,
                 ethers.utils.parseUnits(price, 18),
                 {
-                    value: ethers.utils.parseUnits(price,18),
-                }
+                    value: ethers.utils.parseUnits(price, 18),
+                },
             )
             await createItem.wait();
+            console.log("Item got created");
             console.log(createItem);
         } catch (error) {
             console.log("Something went wrong!", error);
@@ -104,7 +106,7 @@ export const TrackingProvider = ({ children }) => {
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner()
             const contract = new ethers.Contract(ContractAddress, ContractABI, signer)
-            const shipmentsCount = await contract.getShipmentsCount(accounts[0]);
+            const shipmentsCount = await contract.getShipmentCount(accounts[0])
             return shipmentsCount.toNumber();
         } catch (error) {
             console.log("error:",
