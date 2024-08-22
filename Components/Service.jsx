@@ -1,7 +1,7 @@
 import images from "../Images/index"
 import Image from "next/image"
 
-export default ({ setOpenProfile, setCompleteModal, setGetModal, setStartModal }) => {
+export default ({ setOpenProfile, setCompleteModel, setGetModel, setStartModel }) => {
     const team = [
         { avatar: images.compShipment },
         { avatar: images.getShipment },
@@ -13,11 +13,11 @@ export default ({ setOpenProfile, setCompleteModal, setGetModal, setStartModal }
 
     const openModalBox = (text) => {
         if (text === 1) {
-            setCompleteModal(true)
+            setCompleteModel(true)
         } else if (text === 2) {
-            setGetModal(true)
+            setGetModel(true)
         } else if (text === 3) {
-            setStartModal(true)
+            setStartModel(true)
         } else if (text === 4) {
             setOpenProfile(true)
         }

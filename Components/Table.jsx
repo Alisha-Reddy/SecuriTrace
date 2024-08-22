@@ -1,6 +1,16 @@
 export default ({ setCreateShipmentModel, allShipmentsdata }) => {
     const convertTime = (time) => {
+        if (!time) {
+            console.warn("Invalid time provided for conversion")
+            return "Invalid Date"
+        }
+
         const newTime = new Date(time)
+        if (isNaN(newTime.getTime())) {
+            console.warn("Invalid date object created")
+            return "Invalid Date"
+        }
+
         const dataTime = new Intl.DateTimeFormat("en-US", {
             year: "numeric",
             month: "2-digit",
@@ -10,7 +20,16 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
         return dataTime
     }
 
-    console.log(allShipmentsdata)
+    
+    if (!allShipmentsdata) {
+        console.log("allShipmentsdata is undefined or null")
+    } else if (allShipmentsdata.length === 0) {
+        console.log("allShipmentsdata is an empty array")
+    } else {
+        console.log("allShipmentsdata:", allShipmentsdata)
+    }
+
+    // console.log(allShipmentsdata)
 
     return (
         <div className="max-w-screen-xl mx-auto px-4 md:px-8">

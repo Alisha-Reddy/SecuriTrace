@@ -6,12 +6,17 @@ export default ({ getModel, setGetModel, getShipment }) => {
     const [singleShipmentData, setSingleShipmentData] = useState()
 
     const getShipmentData = async () => {
-        const getData = await getShipment(index)
-        setSingleShipmentData(getData)
-        console.log(getData)
+        try {
+            const getData = await getShipment(index)
+            setSingleShipmentData(getData)
+            console.log(getData)
+        } catch (error) {
+            console.error("Error fetching shipment data:", error)
+        }
     }
 
-    console.log(singleShipmentData)
+
+    console.log("Single shipment data: ", singleShipmentData)
 
     const convertTime = (time) => {
         const newTime = new Date(time)
