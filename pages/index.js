@@ -34,28 +34,28 @@ const index = () => {
     const [allShipmentsdata, setAllShipmentsdata] = useState([])
 
     useEffect(() => {
-        // const fetchShipmentsData = async () => {
-        //     try {
-        //         const shipments = await getAllShipment()
-        //         console.log("shipments:", shipments)
-        //         setAllShipmentsdata(shipments)
-        //     } catch (error) {
-        //         console.log("Error fetching shipments data:", error)
-        //     }
-        // }
-        
-        // fetchShipmentsData()
-
-        const getCampaignsData = getAllShipment()
-        console.log("Get Campaigns data: ", getCampaignsData)
-
-        return async () => {
-            const allData = await getCampaignsData
-            console.log("all data:", allData)
-            setAllShipmentsdata(allData)
+        const fetchShipmentsData = async () => {
+            try {
+                const shipments = await getAllShipment()
+                console.log("shipments:", shipments)
+                setAllShipmentsdata(shipments)
+            } catch (error) {
+                console.log("Error fetching shipments data:", error)
+            }
         }
+        
+        fetchShipmentsData()
 
-    }, [])
+        // const getCampaignsData = getAllShipment()
+        // console.log("Get Campaigns data: ", getCampaignsData)
+
+        // return async () => {
+        //     const allData = await getCampaignsData
+        //     console.log("all data:", allData)
+        //     setAllShipmentsdata(allData)
+        // }
+
+    }, [getAllShipment])
 
     return (
         <>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Image from "next/image"
+import { Str1 } from "../Components/index"
 
 // INTERNAL IMPORT
 import images from "../Images/index"
@@ -34,7 +35,7 @@ export default ({ openProfile, setOpenProfile, currentUser, getShipmentsCount })
                     <div className="max-w-sm mx-auto py-3 space-y-3 text-center">
                         <div className="flex flex-col items-center pbb-10">
                             <Image
-                                className="w-24 h-24 mb-3 rounded-full shadow-lg"
+                                className="w-25 h-25 mb-3 rounded-full shadow-lg"
                                 src={images.avatar}
                                 alt="Bonnie image"
                             ></Image>

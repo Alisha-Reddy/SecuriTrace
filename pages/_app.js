@@ -1,3 +1,4 @@
+import React from "react"
 import "@/styles/globals.css"
 
 // INTERNAL IMPORT
@@ -6,11 +7,13 @@ import { Footer, NavBar } from "@/Components"
 export default function App({ Component, pageProps }) {
     return (
         <>
-            <TrackingProvider>
-                <NavBar />
-                <Component {...pageProps} />
-                <Footer />
-            </TrackingProvider>
+            <React.StrictMode>
+                <TrackingProvider>
+                    <NavBar />
+                    <Component {...pageProps} />
+                    <Footer />
+                </TrackingProvider>
+            </React.StrictMode>
         </>
     )
 }

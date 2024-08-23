@@ -161,6 +161,10 @@ export const TrackingProvider = ({ children }) => {
             const signer = provider.getSigner()
             const contract = fetchContract(signer)
 
+            console.log("sender:", accounts[0])
+            console.log("receiver:", receiver)
+            console.log("index", index)
+
             const transaction = await contract.completeShipment(accounts[0], receiver, index, {
                 gasLimit: 300000,
             })
@@ -168,7 +172,7 @@ export const TrackingProvider = ({ children }) => {
             transaction.wait()
             console.log(transaction)
         } catch (error) {
-            console.log("wrong completeshipent", error)
+            console.log("wrong completeshipment", error)
         }
     }
 
@@ -196,7 +200,7 @@ export const TrackingProvider = ({ children }) => {
             // const shipment = await contract.getShipment(accounts[0], index * 1)
             
             console.log(`Fetching shipment with index: ${index}`)
-            const shipment = await contract.getShipment(currentUser, index)
+            const shipment = await contract.getShipment(accounts[index], index)
             console.log("Raw single shipment data:", shipment)
 
             const SingleShipment = {

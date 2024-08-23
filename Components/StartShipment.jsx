@@ -1,28 +1,34 @@
 import { useState } from "react"
 import {  Str1 } from "../Components/index"
 
-export default ({ startModal, setStartModal, startShipment }) => {
+export default ({ startModel, setStartModel, startShipment }) => {
     const [getProduct, setGetProduct] = useState({
         receiver: "",
         index: "",
     })
 
-    const startShipping = () => {
-        startShipment(getProduct)
+    const startShipping = async () => {
+        try {
+            await startShipment(getProduct)
+            setGetProduct({ receiver: "", index: "" })
+            setStartModel(false)
+        } catch (error) {
+            console.log("Error starting shipment:", error)
+        }
     }
 
-    return startModal ? (
+    return startModel ? (
         <div className="fixed inset-0 z-10 overflow-y-auto">
             <div
                 className="fixed inset-0 w-full h-full bg-black opacity-40"
-                onClick={() => setStartModal(false)}
+                onClick={() => setStartModel(false)}
             ></div>
             <div className="flex items-center min-h-screen px-4 py-8">
                 <div className="relative w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg">
                     <div className="flex justify-end">
                         <button
                             className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
-                            onClick={() => setStartModal(false)}
+                            onClick={() => setStartModel(false)}
                         >
                             <Str1></Str1>
                         </button>
@@ -68,7 +74,5 @@ export default ({ startModal, setStartModal, startShipment }) => {
                 </div>
             </div>
         </div>
-    ) : (
-        ""
-    )
+    ) : null
 }

@@ -4,6 +4,7 @@ import startShipment from "./startShipment.png"
 import userProfile from "./userProfile.png"
 import shipCount from "./shipCount.png"
 import send from "./send.png"
+import avatar from "./avatar.jpg"
 
 const images = {
     compShipment,
@@ -12,6 +13,7 @@ const images = {
     userProfile,
     shipCount,
     send,
+    avatar,
 }
 
 export default images;

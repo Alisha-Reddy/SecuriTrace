@@ -8,8 +8,8 @@ export default ({ getModel, setGetModel, getShipment }) => {
     const getShipmentData = async () => {
         try {
             const getData = await getShipment(index)
+            console.log("Fetched Shipment Data:", getData) 
             setSingleShipmentData(getData)
-            console.log(getData)
         } catch (error) {
             console.error("Error fetching shipment data:", error)
         }
@@ -70,8 +70,8 @@ export default ({ getModel, setGetModel, getShipment }) => {
                             ""
                         ) : (
                             <div className="text-left">
-                                <p>Sender: {setSingleShipmentData.sender.slice(0, 25)}...</p>
-                                <p>Receiver: {setSingleShipmentData.receiver.slice(0, 25)}...</p>
+                                <p>Sender: {singleShipmentData.sender.slice(0, 25)}...</p>
+                                <p>Receiver: {singleShipmentData.receiver.slice(0, 25)}...</p>
                                 <p>PickupTime: {convertTime(singleShipmentData.pickupTime)}</p>
                                 <p>DeliveryTime: {convertTime(singleShipmentData.deliveryTime)}</p>
                                 <p>Distance: {singleShipmentData.distance}</p>

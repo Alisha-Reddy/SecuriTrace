@@ -1,27 +1,34 @@
 import { useState } from "react"
+import { Str1 } from "../Components/index"
 
-export default ({ completeModal, setCompleteModal, completeShipment }) => {
+export default ({ completeModel, setCompleteModel, completeShipment }) => {
     const [completeShip, setCompleteShip] = useState({
         receiver: "",
         index: "",
     })
 
     const changeStatus = async () => {
-        completeShipment(completeShip)
+        try {
+            await completeShipment(completeShip)
+            setCompleteShip({ receiver: "", index: "" })
+            setCompleteModel(false)
+        } catch (error) {
+            console.log("Error completing shipment", error)
+        }
     }
 
-    return completeModal ? (
+    return completeModel ? (
         <div className="fixed inset-0 z-10 overflow-y-auto">
             <div
                 className="fixed inset-0 w-full h-full bg-black opacity-40"
-                onClick={() => setCompleteModal(false)}
+                onClick={() => setCompleteModel(false)}
             ></div>
             <div className="flex items-center min-h-screen px-4 py-8">
                 <div className="relative w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg">
                     <div className="flex justify-end">
                         <button
                             className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
-                            onClick={() => setCompleteModal(false)}
+                            onClick={() => setCompleteModel(false)}
                         >
                             <Str1 />
                         </button>
@@ -67,7 +74,5 @@ export default ({ completeModal, setCompleteModal, completeShipment }) => {
                 </div>
             </div>
         </div>
-    ) : (
-        ""
-    )
+    ) : null;
 }

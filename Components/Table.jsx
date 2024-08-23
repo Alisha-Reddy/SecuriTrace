@@ -1,35 +1,37 @@
-export default ({ setCreateShipmentModel, allShipmentsdata }) => {
-    const convertTime = (time) => {
-        if (!time) {
-            console.warn("Invalid time provided for conversion")
-            return "Invalid Date"
-        }
+import { useCallback } from "react"
 
-        const newTime = new Date(time)
-        if (isNaN(newTime.getTime())) {
-            console.warn("Invalid date object created")
-            return "Invalid Date"
-        }
-
-        const dataTime = new Intl.DateTimeFormat("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        }).format(newTime)
-
-        return dataTime
+const convertTime = (time) => {
+    if (!time) {
+        console.warn("Invalid time provided for conversion")
+        return "Invalid Date"
     }
 
-    
-    if (!allShipmentsdata) {
-        console.log("allShipmentsdata is undefined or null")
-    } else if (allShipmentsdata.length === 0) {
+    const newTime = new Date(time)
+    if (isNaN(newTime.getTime())) {
+        console.warn("Invalid date object created")
+        return "Invalid Date"
+    }
+
+    const dataTime = new Intl.DateTimeFormat("en-US", {
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+    }).format(newTime)
+
+    return dataTime
+}
+
+export default ({ setCreateShipmentModel, allShipmentsdata }) => {
+
+    const handleAddTrackingClick = useCallback(() => {
+        setCreateShipmentModel(true)
+    }, [setCreateShipmentModel])
+
+    if (allShipmentsdata.length === 0) {
         console.log("allShipmentsdata is an empty array")
     } else {
         console.log("allShipmentsdata:", allShipmentsdata)
     }
-
-    // console.log(allShipmentsdata)
 
     return (
         <div className="max-w-screen-xl mx-auto px-4 md:px-8">
@@ -43,7 +45,7 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
                 </div>
                 <div className="mt-3 md:mt-0">
                     <p
-                        onClick={() => setCreateShipmentModel(true)}
+                        onClick={() => handleAddTrackingClick}
                         href="#"
                         className="inline-block px-4 py-2 text-white duration-150 font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 md:text-sm rounded-lg md:inline-flex"
                     >
