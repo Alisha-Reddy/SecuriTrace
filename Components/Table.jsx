@@ -22,12 +22,17 @@ const convertTime = (time) => {
     return dataTime
 }
 
+
+
+
 export default ({ setCreateShipmentModel, allShipmentsdata }) => {
     const handleAddTrackingClick = useCallback(() => {
         setCreateShipmentModel(true)
     }, [setCreateShipmentModel])
 
     console.log("allShipmentsdata:", allShipmentsdata)
+    console.log("Raw pickupTime:", allShipmentsdata.pickupTime)
+    console.log("Formatted pickupTime:", convertTime(allShipmentsdata.pickupTime))
 
     return (
         <div className="max-w-screen-xl mx-auto px-4 md:px-8">

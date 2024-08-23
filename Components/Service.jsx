@@ -36,7 +36,8 @@ export default ({ setOpenProfile, setCompleteModel, setGetModel, setStartModel }
                                 >
                                     <Image
                                         src={item.avatar}
-                                        className="w-full h-full object-cover object-center shadow-md rounded-xl"
+                                        className="w-full h-full object-cover object-center shadow-md rounded-xl "
+                                        style={{cursor:"pointer"}}
                                         alt=""
                                     />
                                 </div>

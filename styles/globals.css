@@ -12,3 +12,25 @@ body{
 .changeImage{
     filter: grayscale(100%)
 }
+
+/* For Tailwind CSS (add to your global CSS file) */
+
+/* Initially hidden menu */
+.menu {
+    @apply hidden;
+}
+
+/* Menu visible when isMenuOpen is true */
+.menu-open {
+    @apply block;
+}
+
+/* Additional styling for the menu */
+.menu {
+    @apply transition-all duration-300 ease-in-out;
+}
+
+/* Styling for the menu items */
+.menu-item {
+    @apply p-2 rounded-2xl text-gray-200 hover:text-gray-400 hover:shadow-md hover:shadow-gray-800;
+}
