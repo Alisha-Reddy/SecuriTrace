@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Close } from "../Components/index"
+import styles from "./Button.module.css"
 
 export default ({ setCreateShipmentModel, createShipmentModel, createShipment }) => {
     const [shipment, setShipment] = useState({
@@ -13,8 +14,10 @@ export default ({ setCreateShipmentModel, createShipmentModel, createShipment })
         try {
             await createShipment(shipment)
             setCreateShipmentModel(false)
+            return true;
         } catch (error) {
             console.log("Something wet wrong with creating item")
+            return false;
         }
     }
 
@@ -31,7 +34,7 @@ export default ({ setCreateShipmentModel, createShipmentModel, createShipment })
                             className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
                             onClick={() => setCreateShipmentModel(false)}
                         >
-                             <Close/>
+                            <Close />
                         </button>
                     </div>
                     <div className="max-w-sm mx-auto py-3 space-y-3 text-center">
@@ -96,14 +99,22 @@ export default ({ setCreateShipmentModel, createShipmentModel, createShipment })
                                     }
                                 />
                             </div>
-                            <button onClick={createItem}
-                               className="block w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg ring-offset-2 ring-indigo-600 focus:ring-2" >Create Shipment</button>
+                            <button
+                                onClick={async () => {
+                                    const success = await createItem()
+                                    if (success) {
+                                        window.location.reload()
+                                    }
+                                }}
+                                className={styles.styledButton}
+                                // className="block w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg ring-offset-2 ring-indigo-600 focus:ring-2"
+                            >
+                                Create Shipment
+                            </button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
-    ) : (
-        null
-    )
+    ) : null
 }

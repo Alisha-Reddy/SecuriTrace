@@ -3,7 +3,7 @@ import { Str1 } from "../Components/index"
 import styles from "./Button.module.css"
 
 export default ({ getModel, setGetModel, getShipment }) => {
-    const [index, setIndex] = useState(0)
+    const [index, setIndex] = useState("")
     const [singleShipmentData, setSingleShipmentData] = useState()
     const [loading, setLoading] = useState(false)
 
@@ -40,10 +40,7 @@ export default ({ getModel, setGetModel, getShipment }) => {
         return dataTime
     }
 
-    const handleClose = () => {
-        setGetModel(false)
-        window.location.reload() // Reload the page
-    }
+    
 
     return getModel ? (
         <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -59,7 +56,7 @@ export default ({ getModel, setGetModel, getShipment }) => {
                     <div className="flex justify-end">
                         <button
                             className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
-                            onClick={handleClose}
+                            onClick={()=> setGetModel(false)}
                         >
                             <Str1></Str1>
                         </button>

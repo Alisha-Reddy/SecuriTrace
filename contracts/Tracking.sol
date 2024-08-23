@@ -115,7 +115,7 @@ contract Tracking {
 
         uint256 amount = shipment.price;
 
-        payable(shipment.sender).transfer(amount);
+        payable(shipment.receiver).transfer(amount);
 
         shipment.isPaid = true;
         typeShipment.isPaid = true;

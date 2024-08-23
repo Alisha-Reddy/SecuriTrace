@@ -13,10 +13,14 @@ export default ({ completeModel, setCompleteModel, completeShipment }) => {
             await completeShipment(completeShip)
             setCompleteShip({ receiver: "", index: "" })
             setCompleteModel(false)
+            return true
         } catch (error) {
             console.log("Error completing shipment", error)
+            return false
         }
     }
+
+    
 
     return completeModel ? (
         <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -32,7 +36,7 @@ export default ({ completeModel, setCompleteModel, completeShipment }) => {
                     <div className="flex justify-end">
                         <button
                             className="p-2 text-gray-400 rounded-md hover:bg-stone-50 hover:rounded-full "
-                            onClick={() => setCompleteModel(false)}
+                            onClick={()=>setCompleteModel(false)}
                         >
                             <Str1 />
                         </button>
@@ -67,7 +71,12 @@ export default ({ completeModel, setCompleteModel, completeShipment }) => {
                                 />
                             </div>
                             <button
-                                onClick={() => changeStatus()}
+                                onClick={async () => {
+                                    const success = await changeStatus()
+                                    if (success) {
+                                        window.location.reload()
+                                    }
+                                }}
                                 className={styles.styledButton}
                                 // className="block w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-blue-950 hover:bg- active:bg-indigo-700 rounded-lg ring-offset-2 ring-indigo-600focus:ring-2"
                                 // style={{ background: "#000014" } }

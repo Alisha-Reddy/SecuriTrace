@@ -12,10 +12,13 @@ export default ({ startModel, setStartModel, startShipment }) => {
             await startShipment(getProduct)
             setGetProduct({ receiver: "", index: "" })
             setStartModel(false)
+            return true
         } catch (error) {
             console.log("Error starting shipment:", error)
+            return false
         }
     }
+    
 
     return startModel ? (
         <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -28,7 +31,7 @@ export default ({ startModel, setStartModel, startShipment }) => {
                     <div className="flex justify-end">
                         <button
                             className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
-                            onClick={() => setStartModel(false)}
+                            onClick={()=>setStartModel(false)}
                         >
                             <Str1></Str1>
                         </button>
@@ -63,11 +66,16 @@ export default ({ startModel, setStartModel, startShipment }) => {
                                 />
                             </div>
                             <button
-                                onClick={() => startShipping()}
+                                onClick={async () => {
+                                    const success = await startShipping()
+                                    if (success) {
+                                        window.location.reload()
+                                    }
+                                }}
                                 className="block w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg ring-offset-2 ring-indigo-600focus:ring-2"
                             >
                                 {" "}
-                                Start Shipment
+                                START SHIPMENT
                             </button>
                         </form>
                     </div>
