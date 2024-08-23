@@ -19,6 +19,9 @@ export const TrackingProvider = ({ children }) => {
     // STATE VARIABLE
     const DappName = "Product Tracking Dapp"
     const [currentUser, setCurrentUser] = useState("")
+    const web3Modal = useRef()
+
+    
 
     const createShipment = async (items) => {
         console.log(items)
@@ -248,7 +251,7 @@ export const TrackingProvider = ({ children }) => {
     // CHECK WALLET CONNECTED
     const checkIfWalletConnected = async () => {
         try {
-            if (!window.ethereum) return "Tnstall Metamask"
+            if (!window.ethereum) return "Install Metamask"
 
             const accounts = await window.ethereum.request({
                 method: "eth_requestAccounts",

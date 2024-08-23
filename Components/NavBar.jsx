@@ -22,11 +22,12 @@ export default () => {
 
     return (
         <nav
-            className={`bg-white pb-5 md:text-sm ${
+            className={` bg-black pb-5 md:text-sm ${
                 state
                     ? "shadow-lg rounded-xl border mx-2 mt-2 md:shadow-none md:border-none md:mx-2 md:mt-0"
                     : ""
             }`}
+            style={{ background: "#000014" }}
         >
             <div className="gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8">
                 <div className="felx items-center justify-between py-5 md:block">
@@ -38,9 +39,10 @@ export default () => {
                             alt="Float UI logo"
                         />
                     </a>
-                    <div className="md:hidden">
+                    <div className="md:hidden ">
                         <button
-                            className="menu-btn text-gray-500 hover:text-gray-800"
+                            className="menu-btn text-gray-200 hover:text-gray-400"
+                            style={{ background: "#141421" }}
                             onClick={() => setState(!state)}
                         >
                             {state ? <Nav1 /> : <Nav2 />}
@@ -48,14 +50,17 @@ export default () => {
                     </div>
                 </div>
                 <div
-                    className={`flex-1 items-center mt-8 md:mt-0 md:flex ${
+                    className={`flex-1 items-center mt-8 md:mt-0 md:flex  ${
                         state ? "block" : "hidden"
                     }`}
                 >
-                    <ul className="justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0 ">
+                    <ul className=" justify-center items-center space-y-6 md:flex md:space-x-6 md:space-y-0 ">
                         {navigation.map((item, idx) => {
                             return (
-                                <li key={idx} className="text-gray-700 hover:text-gray-900">
+                                <li
+                                    key={idx}
+                                    className=" p-2 rounded-2xl text-gray-200 hover:text-gray-400 hover:shadow-md hover:shadow-gray-800"
+                                >
                                     <a href={item.path} className="block">
                                         {item.title}
                                     </a>
@@ -65,15 +70,15 @@ export default () => {
                     </ul>
                     <div className="flex-1 gap-x-6 items-center justify-end mt-6 space-y-6 md:flex md:space-y- md:mt-0">
                         {currentUser ? (
-                            <p className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex">
-                                {currentUser.slice(0, 25)}..
+                            <p className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 active:bg-gray-900 rounded-full md:inline-flex hover:shadow-md hover:shadow-gray-600">
+                                {currentUser.slice(0, 6)}......
+                                {currentUser.slice(currentUser.length - 6)}
                             </p>
                         ) : (
                             <button
-                                onClick={() => {
-                                    connectWallet()
-                                }}
-                                className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex"
+                                onClick={connectWallet}
+                                className="flex items-center justify-center gap-x-1 py-2 px-4 text-white font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 rounded-full md:inline-flex  hover:shadow-md hover:shadow-gray-800"
+                                style={{ background: "#141421" }}
                             >
                                 Connect Wallet
                                 <Nav3 />

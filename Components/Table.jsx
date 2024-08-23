@@ -27,11 +27,7 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
         setCreateShipmentModel(true)
     }, [setCreateShipmentModel])
 
-    if (allShipmentsdata.length === 0) {
-        console.log("allShipmentsdata is an empty array")
-    } else {
-        console.log("allShipmentsdata:", allShipmentsdata)
-    }
+    console.log("allShipmentsdata:", allShipmentsdata)
 
     return (
         <div className="max-w-screen-xl mx-auto px-4 md:px-8">
@@ -45,9 +41,10 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
                 </div>
                 <div className="mt-3 md:mt-0">
                     <p
-                        onClick={() => handleAddTrackingClick}
+                        onClick={
+                            handleAddTrackingClick}
                         href="#"
-                        className="inline-block px-4 py-2 text-white duration-150 font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 md:text-sm rounded-lg md:inline-flex"
+                        className="inline-block px-4 py-2 text-white duration-150 font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 md:text-sm rounded-lg md:inline-flex hover:shadow-md hover:shadow-black"
                     >
                         {" "}
                         Add Tracking

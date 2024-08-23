@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Str1 } from "../Components/index"
+import styles from "./Button.module.css"
 
 export default ({ completeModel, setCompleteModel, completeShipment }) => {
     const [completeShip, setCompleteShip] = useState({
@@ -24,23 +25,26 @@ export default ({ completeModel, setCompleteModel, completeShipment }) => {
                 onClick={() => setCompleteModel(false)}
             ></div>
             <div className="flex items-center min-h-screen px-4 py-8">
-                <div className="relative w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg">
+                <div
+                    className="relative w-full max-w-lg p-4 mx-auto  rounded-md shadow-lg"
+                    style={{ background: "#ccdaf8" }}
+                >
                     <div className="flex justify-end">
                         <button
-                            className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
+                            className="p-2 text-gray-400 rounded-md hover:bg-stone-50 hover:rounded-full "
                             onClick={() => setCompleteModel(false)}
                         >
                             <Str1 />
                         </button>
                     </div>
                     <div className="max-w-sm mx-auto py-3 space-y-3 text-center">
-                        <h4 className="text-lg font-medium text-gray-800">Complete Shipment</h4>
+                        <h4 className="text-lg font-medium text-gray-800">COMPLETE SHIPMENT</h4>
                         <form onSubmit={(e) => e.preventDefault()}>
                             <div className="relative mt-3">
                                 <input
                                     type="text"
-                                    placeholder="receiver"
-                                    className="w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                                    placeholder="Receiver"
+                                    className="w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border bg-white focus:border-black shadow-sm rounded-lg"
                                     onChange={(e) =>
                                         setCompleteShip({
                                             ...completeShip,
@@ -52,8 +56,8 @@ export default ({ completeModel, setCompleteModel, completeShipment }) => {
                             <div className="relative mt-3">
                                 <input
                                     type="number"
-                                    placeholder="Id"
-                                    className="w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg"
+                                    placeholder="ID"
+                                    className="w-full pl-5 pr-3 py-2 text-gray-500 bg-transparent outline-none border bg-white focus:border-black shadow-sm rounded-lg"
                                     onChange={(e) =>
                                         setCompleteShip({
                                             ...completeShip,
@@ -64,7 +68,9 @@ export default ({ completeModel, setCompleteModel, completeShipment }) => {
                             </div>
                             <button
                                 onClick={() => changeStatus()}
-                                className="block w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700 rounded-lg ring-offset-2 ring-indigo-600focus:ring-2"
+                                className={styles.styledButton}
+                                // className="block w-full mt-3 py-3 px-4 font-medium text-sm text-center text-white bg-blue-950 hover:bg- active:bg-indigo-700 rounded-lg ring-offset-2 ring-indigo-600focus:ring-2"
+                                // style={{ background: "#000014" } }
                             >
                                 {" "}
                                 Change Status
@@ -74,5 +80,5 @@ export default ({ completeModel, setCompleteModel, completeShipment }) => {
                 </div>
             </div>
         </div>
-    ) : null;
+    ) : null
 }

@@ -22,7 +22,7 @@ export default () => {
 
     return (
         <footer className="pt-10">
-            <div className="max-w-screen-xl mx-auto px-4text-gray-600 md:px-8">
+            <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
                 <div className="justify-between sm:flex">
                     <div className="space-y-6">
                         <img src="https://floatui.com/logo.svg" className="w-32" />
@@ -57,7 +57,7 @@ export default () => {
                     </div>
                 </div>
                 <div className="mt-1 py-10 border-t md:text-center">
-                    <p>© 2024 Alisha Reddy Kondaou. All rights reserved.</p>
+                    <p>© 2024 Alisha Reddy Kondapu. All rights reserved.</p>
                 </div>
             </div>
         </footer>
