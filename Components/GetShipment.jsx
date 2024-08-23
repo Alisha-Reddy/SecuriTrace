@@ -55,8 +55,8 @@ export default ({ getModel, setGetModel, getShipment }) => {
                 >
                     <div className="flex justify-end">
                         <button
-                            className="p-2 text-gray-400 rounded-md hover:bg-gray-100"
-                            onClick={()=> setGetModel(false)}
+                            className="p-2 text-gray-400 rounded-md hover:bg-stone-50 hover:rounded-full "
+                            onClick={() => setGetModel(false)}
                         >
                             <Str1></Str1>
                         </button>

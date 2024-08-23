@@ -1,3 +1,4 @@
+import styles from "./Button.module.css"
 import { useCallback } from "react"
 
 const convertTime = (time) => {
@@ -22,7 +23,6 @@ const convertTime = (time) => {
 }
 
 export default ({ setCreateShipmentModel, allShipmentsdata }) => {
-
     const handleAddTrackingClick = useCallback(() => {
         setCreateShipmentModel(true)
     }, [setCreateShipmentModel])
@@ -40,20 +40,15 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
                     </p>
                 </div>
                 <div className="mt-3 md:mt-0">
-                    <p
-                        onClick={
-                            handleAddTrackingClick}
-                        href="#"
-                        className="inline-block px-4 py-2 text-white duration-150 font-medium bg-gray-800 hover:bg-gray-700 active:bg-gray-900 md:text-sm rounded-lg md:inline-flex hover:shadow-md hover:shadow-black"
-                    >
+                    <p onClick={handleAddTrackingClick} href="#" className={styles.styledButton}>
                         {" "}
                         Add Tracking
                     </p>
                 </div>
             </div>
             <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
-                <table className="w-full table-auto text-sm text-left">
-                    <thead className="bg-gray-50 text-gray-600 font-medium border-b">
+                <table className="w-full table-auto text-sm text-left bg-white">
+                    <thead className="bg-gray-100 text-gray-600 font-medium border-b">
                         <tr>
                             <th className="py-3 px-6">Sender </th>
                             <th className="py-3 px-6">Receiver </th>

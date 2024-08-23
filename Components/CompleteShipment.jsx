@@ -42,7 +42,7 @@ export default ({ completeModel, setCompleteModel, completeShipment }) => {
                         </button>
                     </div>
                     <div className="max-w-sm mx-auto py-3 space-y-3 text-center">
-                        <h4 className="text-lg font-medium text-gray-800">COMPLETE SHIPMENT</h4>
+                        <h4 className="text-lg font-medium text-gray-800">COMPLETE THE SHIPMENT</h4>
                         <form onSubmit={(e) => e.preventDefault()}>
                             <div className="relative mt-3">
                                 <input
