@@ -1,6 +1,8 @@
 import { useEffect, useState, useContext } from "react"
 import { TrackingContext } from "@/Context/Tracking"
 import { Nav1, Nav2, Nav3 } from "../Components/index"
+import Image from "next/image"
+import images from "../Images/index"
 
 export default () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -13,21 +15,22 @@ export default () => {
         { title: "Erc20", path: "#" },
     ]
 
-    useEffect(() => {
-        const handleClickOutside = (e) => {
-            if (!e.target.closest(".menu-btn") && !e.target.closest(".menu")) {
-                setIsMenuOpen(false)
-            }
-        }
+    // useEffect(() => {
+    //     const handleClickOutside = (e) => {
+    //         if (!e.target.closest(".menu-btn") && !e.target.closest(".menu")) {
+    //             setIsMenuOpen(false)
+    //         }
+    //     }
 
-        document.addEventListener("click", handleClickOutside)
+    //     // document.addEventListener("click", handleClickOutside)
 
-        return () => {
-            document.removeEventListener("click", handleClickOutside)
-        }
-    }, [])
+    //     return () => {
+    //         // document.removeEventListener("click", handleClickOutside)
+    //     }
+    // }, [])
 
-    const toggleMenu = () => {
+    const toggleMenu = (e) => {
+        // e.stopPropagation() // Prevent the click from triggering the handleClickOutside
         setIsMenuOpen((prev) => !prev)
     }
 
@@ -38,14 +41,11 @@ export default () => {
         >
             <div className="gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8">
                 <div className="flex items-center justify-between py-5 md:block">
-                    <a href="#">
-                        <img
-                            src="https://floatui.com/logo.svg"
-                            width={120}
-                            height={50}
-                            alt="Float UI logo"
-                        />
-                    </a>
+                    <Image
+                        className="w-24 shadow-xl shadow-zinc-900 rounded-md"
+                        src={images.logo}
+                        alt="Bonnie image"
+                    />
                     <div className="md:hidden">
                         <button
                             className={`menu-btn text-gray-200 hover:text-gray-400 ${isMenuOpen ? "bg-gray-800" : "bg-gray-900"}`}
@@ -83,7 +83,7 @@ export default () => {
                                 style={{ background: "#141421" }}
                             >
                                 Connect Wallet
-                                <Nav3 />
+                                <Nav1 />
                             </button>
                         )}
                     </div>

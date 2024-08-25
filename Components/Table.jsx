@@ -1,37 +1,31 @@
 import styles from "./Button.module.css"
 import { useCallback } from "react"
 
-const convertTime = (time) => {
-    if (!time) {
-        console.warn("Invalid time provided for conversion")
-        return "Invalid Date"
-    }
-
-    const newTime = new Date(time)
-    if (isNaN(newTime.getTime())) {
-        console.warn("Invalid date object created")
-        return "Invalid Date"
-    }
-
-    const dataTime = new Intl.DateTimeFormat("en-US", {
-        year: "numeric",
-        month: "2-digit",
-        day: "2-digit",
-    }).format(newTime)
-
-    return dataTime
-}
-
-
-
-
 export default ({ setCreateShipmentModel, allShipmentsdata }) => {
     const handleAddTrackingClick = useCallback(() => {
         setCreateShipmentModel(true)
     }, [setCreateShipmentModel])
 
+    const convertTime = (time) => {
+        if (!time) {
+            console.warn("Invalid time provided for conversion")
+            return "Invalid time"
+        }
+
+        const newTime = new Date(time)
+        if (isNaN(newTime.getTime())) {
+            console.warn("Invalid date object created")
+            return "Invalid Date"
+        }
+
+        const dateTime = newTime.toLocaleString()
+
+        return dateTime
+    }
+
     console.log("allShipmentsdata:", allShipmentsdata)
     console.log("Raw pickupTime:", allShipmentsdata.pickupTime)
+    console.log("Raw deliveryTime:", allShipmentsdata.deliveryTime)
     console.log("Formatted pickupTime:", convertTime(allShipmentsdata.pickupTime))
 
     return (
@@ -75,14 +69,16 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
                                     {shipment.receiver.slice(0, 15)}...
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    {convertTime(shipment.pickUpTime)}
+                                    {convertTime(shipment.pickupTime)}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     {shipment.distance} Km
                                 </td>
-                                <td className="px-6 py-4 whitespace-nowrap">{shipment.price}</td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    {shipment.deliveryTime}
+                                    {shipment.price} ETH
+                                </td>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                    {convertTime(shipment.deliveryTime)}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     {shipment.isPaid ? "Completed" : "Not Completed"}

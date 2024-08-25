@@ -26,19 +26,21 @@ export default ({ getModel, setGetModel, getShipment }) => {
 
     const convertTime = (time) => {
         if (!time) {
-            return "Invalid Date"
+            console.warn("Invalid time provided for conversion")
+            return "Invalid time"
         }
+
         const newTime = new Date(time)
         if (isNaN(newTime.getTime())) {
+            console.warn("Invalid date object created")
             return "Invalid Date"
         }
-        const dataTime = new Intl.DateTimeFormat("en-US", {
-            year: "numeric",
-            month: "2-digit",
-            day: "2-digit",
-        }).format(newTime)
-        return dataTime
+
+        const dateTime = newTime.toLocaleString()
+
+        return dateTime
     }
+
 
     
 
