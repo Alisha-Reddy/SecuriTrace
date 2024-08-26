@@ -1,7 +1,13 @@
 import images from "../Images/index"
 import Image from "next/image"
 
-export default ({ setOpenProfile, setCompleteModel, setGetModel, setStartModel }) => {
+export default ({
+    setOpenProfile,
+    setCompleteModel,
+    setGetModel,
+    setStartModel,
+    setCancelModel,
+}) => {
     const team = [
         { avatar: images.userProfile },
         { avatar: images.startShipment },
@@ -39,7 +45,7 @@ export default ({ setOpenProfile, setCompleteModel, setGetModel, setStartModel }
                                     <Image
                                         src={item.avatar}
                                         className="w-full h-full object-cover object-center shadow-md rounded-xl "
-                                        style={{cursor:"pointer"}}
+                                        style={{ cursor: "pointer" }}
                                         alt=""
                                     />
                                 </div>

@@ -24,7 +24,7 @@ export default () => {
 
     return (
         <footer className="pt-10" style={{ background: "#000014" }}>
-            <div className="max-w-screen-xl mx-auto px-4 text-gray-200 md:px-8">
+            <div className="max-w-screen-2xl mx-auto px-4 text-gray-200 md:px-8">
                 <div className="justify-between sm:flex">
                     <div className="space-y-6">
                         <div className="flex items-center">

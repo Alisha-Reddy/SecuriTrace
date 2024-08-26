@@ -9,7 +9,7 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
     const convertTime = (time) => {
         if (!time) {
             console.warn("Invalid time provided for conversion")
-            return "Invalid time"
+            return "-"
         }
 
         const newTime = new Date(time)
@@ -23,10 +23,10 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
         return dateTime
     }
 
-    console.log("allShipmentsdata:", allShipmentsdata)
-    console.log("Raw pickupTime:", allShipmentsdata.pickupTime)
-    console.log("Raw deliveryTime:", allShipmentsdata.deliveryTime)
-    console.log("Formatted pickupTime:", convertTime(allShipmentsdata.pickupTime))
+    // console.log("allShipmentsdata:", allShipmentsdata)
+    // console.log("Raw pickupTime:", allShipmentsdata.pickupTime)
+    // console.log("Raw deliveryTime:", allShipmentsdata.deliveryTime)
+    // console.log("Formatted pickupTime:", convertTime(allShipmentsdata.pickupTime))
 
     return (
         <div className="max-w-screen-xl mx-auto py-10 px-4 md:px-8">
@@ -88,7 +88,10 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
                                         ? "PENDING"
                                         : shipment.status === 1
                                           ? "IN-TRANSIT"
-                                          : "DELIVERED"}
+                                            : shipment.status === 2
+                                                ? "CANCELLED"
+                                                : "DELIVERED"
+                                    }
                                 </td>
                             </tr>
                         ))}

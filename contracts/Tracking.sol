@@ -5,6 +5,7 @@ contract Tracking {
     enum ShipmentStatus {
         PENDING,
         IN_TRANSIT,
+        CANCELLED,
         DELIVERED
     }
 
@@ -44,6 +45,12 @@ contract Tracking {
     event ShipmentInTransit(address indexed sender, address indexed receiver, uint256 pickupTime);
     event ShipmentDelivered(address indexed sender, address indexed receiver, uint256 deliveryTime);
     event ShipmentPaid(address indexed sender, address indexed receiver, uint256 amount);
+    event ShipmentCancelled(
+        address indexed sender,
+        address indexed receiver,
+        uint256 indexed index,
+        uint256 amount
+    );
 
     constructor() {
         shipmentCount = 0;
@@ -92,12 +99,32 @@ contract Tracking {
         TypeShipment storage typeShipment = typeShipments[_index];
 
         require(shipment.receiver == _receiver, "Invalid receiver");
-        require(shipment.status == ShipmentStatus.PENDING, "Shipment already is in transit");
+        require(shipment.status == ShipmentStatus.PENDING, "Shipment already not in pending");
 
         shipment.status = ShipmentStatus.IN_TRANSIT;
         typeShipment.status = ShipmentStatus.IN_TRANSIT;
 
         emit ShipmentInTransit(_sender, _receiver, shipment.pickupTime);
+    }
+
+    function cancelShipment(address _sender, address _receiver, uint256 _index) public {
+        Shipment storage shipment = shipments[_sender][_index];
+        TypeShipment storage typeShipment = typeShipments[_index];
+
+        require(_sender == shipment.sender, "Only the sender can close the shipment");
+        require(_receiver == shipment.receiver, "Wrong receiver entered");
+        require(shipment.status != ShipmentStatus.DELIVERED, "Shipment is already delivered");
+
+        shipment.pickupTime = 0;
+        typeShipment.pickupTime = 0;
+        shipment.status = ShipmentStatus.CANCELLED;
+        typeShipment.status = ShipmentStatus.CANCELLED;
+
+        uint256 amount = shipment.price;
+
+        payable(shipment.sender).transfer(amount);
+
+        emit ShipmentCancelled(_sender, _receiver, _index, amount);
     }
 
     function completeShipment(address _sender, address _receiver, uint256 _index) public {

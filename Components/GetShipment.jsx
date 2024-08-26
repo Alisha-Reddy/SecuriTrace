@@ -86,43 +86,49 @@ export default ({ getModel, setGetModel, getShipment }) => {
                         {singleShipmentData == undefined ? (
                             ""
                         ) : (
-                            <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded-lg">
+                            <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded-lg ">
                                 <p className="mb-2 text-gray-700">
-                                    <span className="font-semibold">Sender:</span>{" "}
+                                    <span className="font-bold">Sender:</span>{" "}
                                     {singleShipmentData.sender.slice(0, 6)}......
                                     {singleShipmentData.sender.slice(
                                         singleShipmentData.sender.length - 6,
                                     )}
                                 </p>
                                 <p className="mb-2 text-gray-700">
-                                    <span className="font-semibold">Receiver:</span>{" "}
+                                    <span className="font-bold">Receiver:</span>{" "}
                                     {singleShipmentData.receiver.slice(0, 6)}......
                                     {singleShipmentData.receiver.slice(
                                         singleShipmentData.receiver.length - 6,
                                     )}
                                 </p>
                                 <p className="mb-2 text-gray-700">
-                                    <span className="font-semibold">Pickup Time:</span>{" "}
+                                    <span className="font-bold">Pickup Time:</span>{" "}
                                     {convertTime(singleShipmentData.pickupTime)}
                                 </p>
                                 <p className="mb-2 text-gray-700">
-                                    <span className="font-semibold">Delivery Time:</span>{" "}
+                                    <span className="font-bold">Delivery Time:</span>{" "}
                                     {convertTime(singleShipmentData.deliveryTime)}
                                 </p>
                                 <p className="mb-2 text-gray-700">
-                                    <span className="font-semibold">Distance:</span>{" "}
+                                    <span className="font-bold">Distance:</span>{" "}
                                     {singleShipmentData.distance} km
                                 </p>
                                 <p className="mb-2 text-gray-700">
-                                    <span className="font-semibold">Price:</span> $
+                                    <span className="font-bold">Price:</span> $
                                     {singleShipmentData.price}
                                 </p>
                                 <p className="mb-2 text-gray-700">
-                                    <span className="font-semibold">Status:</span>{" "}
-                                    {singleShipmentData.status}
+                                    <span className="font-bold">Status:</span>{" "}
+                                    {singleShipmentData.status === 0
+                                        ? "PENDING"
+                                        : singleShipmentData.status === 1
+                                          ? "IN-TRANSIT"
+                                          : singleShipmentData.status === 2
+                                            ? "CANCELLED"
+                                            : "DELIVERED"}
                                 </p>
                                 <p className="mb-2 text-gray-700">
-                                    <span className="font-semibold">Paid:</span>{" "}
+                                    <span className="font-bold">Paid:</span>{" "}
                                     {singleShipmentData.isPaid ? "Completed" : "Not Completed"}
                                 </p>
                             </div>

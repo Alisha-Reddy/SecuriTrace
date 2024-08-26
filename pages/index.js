@@ -9,6 +9,7 @@ import {
     CompleteShipment,
     GetShipment,
     StartShipment,
+    CancelShipment
 } from "../Components/index"
 import { TrackingContext } from "@/Context/Tracking"
 
@@ -21,6 +22,7 @@ const index = () => {
         getShipment,
         startShipment,
         getShipmentsCount,
+        cancelShipment,
     } = useContext(TrackingContext)
 
     // STATE VARIABLE
@@ -29,6 +31,7 @@ const index = () => {
     const [startModel, setStartModel] = useState(false)
     const [completeModel, setCompleteModel] = useState(false)
     const [getModel, setGetModel] = useState(false)
+    const [cancelModel, setCancelModel] = useState(false)
 
     // DATA STATE VARIABLE
     const [allShipmentsdata, setAllShipmentsdata] = useState([])
@@ -64,6 +67,7 @@ const index = () => {
                 setCompleteModel={setCompleteModel}
                 setGetModel={setGetModel}
                 setStartModel={setStartModel}
+                setCancelModel={setCancelModel}
             />
             <Table
                 setCreateShipmentModel={setCreateShipmentModel}
@@ -94,6 +98,11 @@ const index = () => {
                 startModel={startModel}
                 setStartModel={setStartModel}
                 startShipment={startShipment}
+            />
+            <CancelShipment
+                cancelModel={cancelModel}
+                setCancelModel={setCancelModel}
+                cancelShipment = {cancelShipment}
             />
         </>
     )

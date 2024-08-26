@@ -7,7 +7,7 @@ import Profile from "./Profile";
 import GetShipment from "./GetShipment";
 import CompleteShipment from "./CompleteShipment";
 import StartShipment from "./StartShipment";
-
+import CancelShipment from "./CancelShipment"
 // SVG
 import Nav1 from "./SVG/Nav1";
 import Nav2 from "./SVG/Nav2";
@@ -27,6 +27,7 @@ export {
     GetShipment,
     CompleteShipment,
     StartShipment,
+    CancelShipment,
     // SVG
     Nav1,
     Nav2,

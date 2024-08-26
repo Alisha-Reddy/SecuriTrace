@@ -34,11 +34,11 @@ export default () => {
                                 alt="logo"
                             />
                         
-                            <p className="text-2xl font-serif pl-2">A L I S H A</p>
+                            <p className="text-xl font-serif pl-2">A L I S H A</p>
                     </div>
                     <div className="md:hidden">
                         <button
-                            className={`menu-btn text-gray-200 hover:text-gray-400 ${isMenuOpen ? "bg-gray-800" : "bg-gray-900"}`}
+                            className={`menu-btn ${isMenuOpen ? "bg-gray-800 rounded-full" : "bg-gray-800 "}`}
                             onClick={toggleMenu}
                         >
                             {isMenuOpen ? <Nav3 /> : <Nav2 />}
