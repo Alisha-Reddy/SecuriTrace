@@ -1,4 +1,6 @@
 import { Fot1, Fot2 } from "../Components/index"
+import Image from "next/image"
+import images from "../Images/index"
 
 export default () => {
     const footerNavs = [
@@ -21,11 +23,15 @@ export default () => {
     ]
 
     return (
-        <footer className="pt-10">
-            <div className="max-w-screen-xl mx-auto px-4 text-gray-600 md:px-8">
+        <footer className="pt-10" style={{ background: "#000014" }}>
+            <div className="max-w-screen-xl mx-auto px-4 text-gray-200 md:px-8">
                 <div className="justify-between sm:flex">
                     <div className="space-y-6">
-                        <img src="https://floatui.com/logo.svg" className="w-32" />
+                        <div className="flex items-center">
+                            <Image className="w-24 rounded-full" src={images.symbol} alt="logo" />
+
+                            <p className="text-2xl font-serif pl-2 text-white ">A L I S H A</p>
+                        </div>{" "}
                         <p className="max-w-md">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quod
                             tempora facilis velit laborum.
@@ -33,17 +39,18 @@ export default () => {
                         <ul className="flex felx-wrap items-center gap-4 text-sm sm:text-base">
                             {footerNavs.map((item, idx) => {
                                 return (
-                                    <li key={idx} className="text-gray-800 hover:text-gray-500 duration-150">
-                                        <a  href={item.href}>
-                                            {item.name}
-                                        </a>
+                                    <li
+                                        key={idx}
+                                        className="text-gray-200 hover:text-white duration-150"
+                                    >
+                                        <a href={item.href}>{item.name}</a>
                                     </li>
                                 )
                             })}
                         </ul>
                     </div>
                     <div className="mt-6">
-                        <p className="text-gray-700 font-semibold">Get the app</p>
+                        <p className="text-gray-200 font-semibold">Get the app</p>
                         <div className="flex items-center gap-3 mt-0 ">
                             <a href="#" className="mt-0 block sm:mt-3">
                                 <Fot1></Fot1>

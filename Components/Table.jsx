@@ -29,7 +29,7 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
     console.log("Formatted pickupTime:", convertTime(allShipmentsdata.pickupTime))
 
     return (
-        <div className="max-w-screen-xl mx-auto px-4 md:px-8">
+        <div className="max-w-screen-xl mx-auto py-10 px-4 md:px-8">
             <div className="items-start justify-between md:flex">
                 <div className="max-w-lg">
                     <h3 className="text-gray-800 text-xl font-bold sm:text-2xl">Create Tracking</h3>
@@ -46,7 +46,7 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
                 </div>
             </div>
             <div className="mt-12 shadow-sm border rounded-lg overflow-x-auto">
-                <table className="w-full table-auto text-sm text-left bg-white">
+                <table className="w-full table-auto pb-10 text-sm text-left bg-white">
                     <thead className="bg-gray-100 text-gray-600 font-medium border-b">
                         <tr>
                             <th className="py-3 px-6">Sender </th>

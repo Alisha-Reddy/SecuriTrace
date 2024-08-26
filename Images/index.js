@@ -1,21 +1,23 @@
-import compShipment from "./compShipment.png"
-import getShipment from "./getShipment.png"
-import startShipment from "./startShipment.png"
-import userProfile from "./userProfile.png"
-import shipCount from "./shipCount.png"
-import send from "./send.png"
+import compShipment from "./compShipment.jpg"
+import getShipment from "./getshipment.jpg"
+import startShipment from "./startShipment.jpg"
+import userProfile from "./userProfile.jpg"
+import cancelshipment from "./cancelshipment.jpg"
+import send from "./send.jpg"
 import avatar from "./avatar.jpg"
 import logo from "./logo.jpg"
+import symbol from "./logo_symbol.png"
 
 const images = {
     compShipment,
     getShipment,
     startShipment,
     userProfile,
-    shipCount,
+    cancelshipment,
     send,
     avatar,
     logo,
+    symbol,
 }
 
 export default images;

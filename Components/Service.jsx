@@ -3,23 +3,25 @@ import Image from "next/image"
 
 export default ({ setOpenProfile, setCompleteModel, setGetModel, setStartModel }) => {
     const team = [
-        { avatar: images.compShipment },
-        { avatar: images.getShipment },
-        { avatar: images.startShipment },
         { avatar: images.userProfile },
-        { avatar: images.shipCount },
+        { avatar: images.startShipment },
+        { avatar: images.getShipment },
+        { avatar: images.compShipment },
+        { avatar: images.cancelshipment },
         { avatar: images.send },
     ]
 
     const openModalBox = (text) => {
         if (text === 1) {
-            setCompleteModel(true)
-        } else if (text === 2) {
-            setGetModel(true)
-        } else if (text === 3) {
-            setStartModel(true)
-        } else if (text === 4) {
             setOpenProfile(true)
+        } else if (text === 2) {
+            setStartModel(true)
+        } else if (text === 3) {
+            setGetModel(true)
+        } else if (text === 4) {
+            setCompleteModel(true)
+        } else if (text === 5) {
+            setCancelModel(true)
         }
     }
 

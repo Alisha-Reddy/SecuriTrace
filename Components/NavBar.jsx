@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react"
+import {  useState, useContext } from "react"
 import { TrackingContext } from "@/Context/Tracking"
 import { Nav1, Nav2, Nav3 } from "../Components/index"
 import Image from "next/image"
@@ -15,20 +15,6 @@ export default () => {
         { title: "Erc20", path: "#" },
     ]
 
-    // useEffect(() => {
-    //     const handleClickOutside = (e) => {
-    //         if (!e.target.closest(".menu-btn") && !e.target.closest(".menu")) {
-    //             setIsMenuOpen(false)
-    //         }
-    //     }
-
-    //     // document.addEventListener("click", handleClickOutside)
-
-    //     return () => {
-    //         // document.removeEventListener("click", handleClickOutside)
-    //     }
-    // }, [])
-
     const toggleMenu = (e) => {
         // e.stopPropagation() // Prevent the click from triggering the handleClickOutside
         setIsMenuOpen((prev) => !prev)
@@ -39,13 +25,17 @@ export default () => {
             className={`bg-black pb-5 md:text-sm ${isMenuOpen ? "shadow-lg rounded-xl border mx-2 mt-2 md:shadow-none md:border-none md:mx-2 md:mt-0" : ""}`}
             style={{ background: "#000014" }}
         >
-            <div className="gap-x-14 items-center max-w-screen-xl mx-auto px-4 md:flex md:px-8">
-                <div className="flex items-center justify-between py-5 md:block">
-                    <Image
-                        className="w-24 shadow-xl shadow-zinc-900 rounded-md"
-                        src={images.logo}
-                        alt="Bonnie image"
-                    />
+            <div className="gap-x-14 items-center max-w-screen-2xl mx-auto px-4 md:flex md:px-8">
+                <div className="flex items-center justify-between py-5  md:block">
+                    <div className="flex items-center">
+                            <Image
+                                className="w-24 rounded-full"
+                                src={images.symbol}
+                                alt="logo"
+                            />
+                        
+                            <p className="text-2xl font-serif pl-2">A L I S H A</p>
+                    </div>
                     <div className="md:hidden">
                         <button
                             className={`menu-btn text-gray-200 hover:text-gray-400 ${isMenuOpen ? "bg-gray-800" : "bg-gray-900"}`}
