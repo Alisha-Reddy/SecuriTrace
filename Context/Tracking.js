@@ -181,7 +181,7 @@ export const TrackingProvider = ({ children }) => {
             })
             await transaction.wait()
 
-            alert("Shipment cancelled successfully!")
+            // alert("Shipment cancelled successfully!")
         } catch (error) {
             console.log("Error cancelling shipment: ", error)
         }
@@ -191,23 +191,25 @@ export const TrackingProvider = ({ children }) => {
         console.log(`Attempting to fetch shipment with index: ${index}`)
         try {
             if (!window.ethereum) return "Install Metamask"
-
+            console.log("1")
+            
             const accounts = await window.ethereum.request({
                 method: "eth_requestAccounts",
             })
+            console.log("2")
             // const provider = new ethers.JsonRpcProvider(`https://eth-mainnet.g.alchemy.com/v2/ErVq1VJ9pedwYuXG8L_WGfru6tpp-VxV`);
             // const contract = fetchContract(provider);
-
+            
             // const provider = new ethers.providers.Web3Provider(window.ethereum)
             // const signer = provider.getSigner()
             // const contract = new ethers.Contract(ContractAddress, ContractABI, signer)
-
+            
             const contract = await connectToContract()
 
             // const shipment = await contract.getShipment(accounts[0], index * 1)
 
             console.log(`Fetching shipment with index: ${index}`)
-            const shipment = await contract.getShipment(accounts[index], index)
+            const shipment = await contract.getShipment(accounts[0], index)
             console.log("Raw single shipment data:", shipment)
 
             // const SingleShipment = {

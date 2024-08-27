@@ -78,7 +78,7 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
                                     {shipment.price} ETH
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    {convertTime(shipment.deliveryTime)}
+                                    {convertTime(shipment.deliveryTime + shipment.pickupTime       )}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     {shipment.isPaid ? "Completed" : "Not Completed"}

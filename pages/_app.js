@@ -1,5 +1,7 @@
 import React from "react"
 import "@/styles/globals.css"
+import Head from "next/head"
+
 
 // INTERNAL IMPORT
 import { TrackingProvider } from "@/Context/Tracking"
@@ -9,9 +11,13 @@ export default function App({ Component, pageProps }) {
         <>
             <React.StrictMode>
                 <TrackingProvider>
-                    <NavBar />
-                    <Component {...pageProps} />
-                    <Footer />
+                    <Head>
+                        <title>Product Tracking Dapp</title>
+                        <meta name="Product Tracking" content="Supply Chain managemnet" />
+                    </Head>
+                        <NavBar />
+                        <Component {...pageProps} />
+                        <Footer />
                 </TrackingProvider>
             </React.StrictMode>
         </>

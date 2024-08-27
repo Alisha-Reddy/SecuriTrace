@@ -38,18 +38,7 @@ describe("Tracking Contract", function () {
         expect(shipment[7]).to.equal(false) // shipment.isPaid
     })
 
-    // it("should start a shipment", async function () {
-    //     await tracking.createShipment(receiver.address, pickupTime, distance, price, {
-    //         value: price,
-    //     })
 
-    //     await expect(tracking.startShipment(owner.address, receiver.address, 0))
-    //         .to.emit(tracking, "ShipmentInTransit")
-    //         .withArgs(owner.address, receiver.address, pickupTime)
-
-    //     const shipment = await tracking.getShipment(owner.address, 0)
-    //     expect(shipment.status).to.equal(1) // IN_TRANSIT
-    // })
     it("should start a shipment", async function () {
         await tracking.createShipment(receiver.address, pickupTime, distance, price, {
             value: price,

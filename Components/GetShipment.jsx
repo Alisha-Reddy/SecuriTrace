@@ -86,7 +86,7 @@ export default ({ getModel, setGetModel, getShipment }) => {
                         {singleShipmentData == undefined ? (
                             ""
                         ) : (
-                            <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded-lg ">
+                            <div className="mt-6 p-4 bg-gray-50 border border-gray-200 rounded-lg">
                                 <p className="mb-2 text-gray-700">
                                     <span className="font-bold">Sender:</span>{" "}
                                     {singleShipmentData.sender.slice(0, 6)}......
