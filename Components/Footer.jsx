@@ -9,7 +9,7 @@ export default () => {
             name: "Terms",
         },
         {
-            href: "#",
+            href: "#", 
             name: "License",
         },
         {

@@ -24,7 +24,7 @@ export default ({ openProfile, setOpenProfile, currentUser, getShipmentsCount })
             ></div>
             <div className="flex items-center min-h-screen px-4 py-8">
                 <div
-                    className="relative w-full max-w-lg p-4 mx-auto bg-white rounded-md shadow-lg"
+                    className="relative w-full max-w-lg p-4 mx-auto  rounded-md shadow-lg"
                     style={{ background: "#ccdaf8" }}
                 >
                     <div className="flex justify-end">
