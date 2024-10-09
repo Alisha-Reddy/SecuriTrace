@@ -12,7 +12,7 @@ export default function App({ Component, pageProps }) {
             <React.StrictMode>
                 <TrackingProvider>
                     <Head>
-                        <title>Product Tracking Dapp</title>
+                        <title>SecuriTrace</title>
                         <meta name="SecuriTrace" content="Supply Chain managemnet" />
                     </Head>
                     <NavBar />
