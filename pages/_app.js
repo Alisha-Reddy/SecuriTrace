@@ -4,7 +4,9 @@ import Head from "next/head"
 
 // INTERNAL IMPORT
 import { TrackingProvider } from "@/Context/Tracking"
-import { Footer, NavBar } from "../components/index.js"
+// import { Footer, NavBar } from "../components/index.js"
+import Footer from "../components/Footer.jsx"
+import NavBar from "../components/NavBar.jsx"
 export default function App({ Component, pageProps }) {
     return (
         <>
