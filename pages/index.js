@@ -10,7 +10,7 @@ import {
     GetShipment,
     StartShipment,
     CancelShipment,
-} from "../components/index"
+} from "../components/index.js"
 import { TrackingContext } from "@/Context/Tracking"
 
 const index = () => {
