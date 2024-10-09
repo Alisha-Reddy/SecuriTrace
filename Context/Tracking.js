@@ -80,6 +80,8 @@ export const TrackingProvider = ({ children }) => {
         try {
             console.log("Fetching all shipments...")
             const contract = await connectToContract()
+            console.log("contract:", contract)
+            
             const shipments = await contract.getAllTransactions()
             console.log("Shipments from contract:", shipments)
 
@@ -87,6 +89,7 @@ export const TrackingProvider = ({ children }) => {
                 console.log("No shipments found or empty response.")
                 return []
             }
+
 
             const allShipments = shipments.map((shipment) => ({
                 sender: shipment.sender,
@@ -209,6 +212,7 @@ export const TrackingProvider = ({ children }) => {
             // const shipment = await contract.getShipment(accounts[0], index * 1)
 
             console.log(`Fetching shipment with index: ${index}`)
+            console.log("1")
             const shipment = await contract.getShipment(accounts[0], index)
             console.log("Raw single shipment data:", shipment)
 
