@@ -13,11 +13,11 @@ export default function App({ Component, pageProps }) {
                 <TrackingProvider>
                     <Head>
                         <title>Product Tracking Dapp</title>
-                        <meta name="Product Tracking" content="Supply Chain managemnet" />
+                        <meta name="SecuriTrace" content="Supply Chain managemnet" />
                     </Head>
-                        <NavBar />
-                        <Component {...pageProps} />
-                        <Footer />
+                    <NavBar />
+                    <Component {...pageProps} />
+                    <Footer />
                 </TrackingProvider>
             </React.StrictMode>
         </>

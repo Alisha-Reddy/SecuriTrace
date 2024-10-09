@@ -30,7 +30,7 @@ export default () => {
                         <div className="flex items-center">
                             <Image className="w-24 rounded-full" src={images.symbol} alt="logo" />
 
-                            <p className="text-2xl font-serif pl-2 text-white ">A L I S H A</p>
+                            <p className="text-2xl font-serif pl-2 text-white ">S e c u r i T r a c e</p>
                         </div>{" "}
                         <p className="max-w-md">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quod

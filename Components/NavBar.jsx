@@ -27,14 +27,14 @@ export default () => {
         >
             <div className="gap-x-14 items-center max-w-screen-2xl mx-auto px-4 md:flex md:px-8">
                 <div className="flex items-center justify-between py-5  md:block">
-                    <div className="flex items-center">
-                            <Image
-                                className="w-24 rounded-full"
-                                src={images.symbol}
-                                alt="logo"
-                            />
-                        
-                            <p className="text-xl font-serif pl-2">A L I S H A</p>
+                    <div className="inline-flex items-center p-0">
+                        <Image
+                            className="w-16 rounded-full m-0 p-0"
+                            src={images.symbol}
+                            alt="logo"
+                        />
+
+                        <p className="text-xl font-serif pl-2 m-0 p-0 item">S e c u r i T r a c e</p>
                     </div>
                     <div className="md:hidden">
                         <button
