@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Close } from "../Components/index"
+import { Close } from "./index"
 import styles from "./Button.module.css"
 
 export default ({ setCreateShipmentModel, createShipmentModel, createShipment }) => {
@@ -14,10 +14,10 @@ export default ({ setCreateShipmentModel, createShipmentModel, createShipment })
         try {
             await createShipment(shipment)
             setCreateShipmentModel(false)
-            return true;
+            return true
         } catch (error) {
             console.log("Something wet wrong with creating item")
-            return false;
+            return false
         }
     }
 

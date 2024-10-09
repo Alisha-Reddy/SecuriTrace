@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Str1 } from "../Components/index"
+import { Str1 } from "./index"
 import styles from "./Button.module.css"
 
 export default ({ completeModel, setCompleteModel, completeShipment }) => {
@@ -20,8 +20,6 @@ export default ({ completeModel, setCompleteModel, completeShipment }) => {
         }
     }
 
-    
-
     return completeModel ? (
         <div className="fixed inset-0 z-10 overflow-y-auto">
             <div
@@ -36,7 +34,7 @@ export default ({ completeModel, setCompleteModel, completeShipment }) => {
                     <div className="flex justify-end">
                         <button
                             className="p-2 text-gray-400 rounded-md hover:bg-stone-50 hover:rounded-full "
-                            onClick={()=>setCompleteModel(false)}
+                            onClick={() => setCompleteModel(false)}
                         >
                             <Str1 />
                         </button>

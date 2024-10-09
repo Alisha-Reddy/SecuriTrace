@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 import Image from "next/image"
-import { Str1 } from "../Components/index"
+import { Str1 } from "./index"
 
 // INTERNAL IMPORT
 import images from "../Images/index"

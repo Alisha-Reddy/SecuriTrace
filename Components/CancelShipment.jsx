@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Str1 } from "../Components/index"
+import { Str1 } from "./index"
 import styles from "./Button.module.css"
 
 export default ({ cancelModel, setCancelModel, cancelShipment }) => {

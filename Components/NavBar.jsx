@@ -1,6 +1,6 @@
-import {  useState, useContext } from "react"
+import { useState, useContext } from "react"
 import { TrackingContext } from "@/Context/Tracking"
-import { Nav1, Nav2, Nav3 } from "../Components/index"
+import { Nav1, Nav2, Nav3 } from "./index"
 import Image from "next/image"
 import images from "../Images/index"
 
@@ -34,7 +34,9 @@ export default () => {
                             alt="logo"
                         />
 
-                        <p className="text-xl font-serif pl-2 m-0 p-0 item">S e c u r i T r a c e</p>
+                        <p className="text-xl font-serif pl-2 m-0 p-0 item">
+                            S e c u r i T r a c e
+                        </p>
                     </div>
                     <div className="md:hidden">
                         <button

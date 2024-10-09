@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Str1 } from "../Components/index"
+import { Str1 } from "./index"
 import styles from "./Button.module.css"
 
 export default ({ startModel, setStartModel, startShipment }) => {
@@ -19,7 +19,6 @@ export default ({ startModel, setStartModel, startShipment }) => {
             return false
         }
     }
-    
 
     return startModel ? (
         <div className="fixed inset-0 z-10 overflow-y-auto">

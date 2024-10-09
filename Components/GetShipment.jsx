@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Str1 } from "../Components/index"
+import { Str1 } from "./index"
 import styles from "./Button.module.css"
 
 export default ({ getModel, setGetModel, getShipment }) => {
@@ -7,12 +7,11 @@ export default ({ getModel, setGetModel, getShipment }) => {
     const [singleShipmentData, setSingleShipmentData] = useState()
     const [loading, setLoading] = useState(false)
 
-
     const getShipmentData = async () => {
         setLoading(true)
         try {
             const getData = await getShipment(index)
-            console.log("Fetched Shipment Data:", getData) 
+            console.log("Fetched Shipment Data:", getData)
             setSingleShipmentData(getData)
         } catch (error) {
             console.error("Error fetching shipment data:", error)
@@ -20,7 +19,6 @@ export default ({ getModel, setGetModel, getShipment }) => {
             setLoading(false)
         }
     }
-
 
     console.log("Single shipment data: ", singleShipmentData)
 
@@ -40,9 +38,6 @@ export default ({ getModel, setGetModel, getShipment }) => {
 
         return dateTime
     }
-
-
-    
 
     return getModel ? (
         <div className="fixed inset-0 z-10 overflow-y-auto">

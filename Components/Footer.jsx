@@ -1,4 +1,4 @@
-import { Fot1, Fot2 } from "../Components/index"
+import { Fot1, Fot2 } from "./index"
 import Image from "next/image"
 import images from "../Images/index"
 
@@ -9,7 +9,7 @@ export default () => {
             name: "Terms",
         },
         {
-            href: "#", 
+            href: "#",
             name: "License",
         },
         {
@@ -30,7 +30,9 @@ export default () => {
                         <div className="flex items-center">
                             <Image className="w-24 rounded-full" src={images.symbol} alt="logo" />
 
-                            <p className="text-2xl font-serif pl-2 text-white ">S e c u r i T r a c e</p>
+                            <p className="text-2xl font-serif pl-2 text-white ">
+                                S e c u r i T r a c e
+                            </p>
                         </div>{" "}
                         <p className="max-w-md">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore quod

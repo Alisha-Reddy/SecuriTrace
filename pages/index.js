@@ -9,8 +9,8 @@ import {
     CompleteShipment,
     GetShipment,
     StartShipment,
-    CancelShipment
-} from "../Components/index"
+    CancelShipment,
+} from "../components/index"
 import { TrackingContext } from "@/Context/Tracking"
 
 const index = () => {
@@ -46,7 +46,7 @@ const index = () => {
                 console.log("Error fetching shipments data:", error)
             }
         }
-        
+
         fetchShipmentsData()
 
         // const getCampaignsData = getAllShipment()
@@ -57,7 +57,6 @@ const index = () => {
         //     console.log("all data:", allData)
         //     setAllShipmentsdata(allData)
         // }
-
     }, [getAllShipment])
 
     return (
@@ -89,11 +88,7 @@ const index = () => {
                 setCompleteModel={setCompleteModel}
                 completeShipment={completeShipment}
             />
-            <GetShipment
-                getModel={getModel}
-                setGetModel={setGetModel}
-                getShipment={getShipment}
-            />
+            <GetShipment getModel={getModel} setGetModel={setGetModel} getShipment={getShipment} />
             <StartShipment
                 startModel={startModel}
                 setStartModel={setStartModel}
@@ -102,7 +97,7 @@ const index = () => {
             <CancelShipment
                 cancelModel={cancelModel}
                 setCancelModel={setCancelModel}
-                cancelShipment = {cancelShipment}
+                cancelShipment={cancelShipment}
             />
         </>
     )
