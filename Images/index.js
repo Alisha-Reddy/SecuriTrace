@@ -5,7 +5,6 @@ import userProfile from "./userprofile.jpg"
 import cancelshipment from "./cancelshipment.jpg"
 import send from "./send.jpg"
 import avatar from "./avatar.jpg"
-import logo from "./logo.jpg"
 import symbol from "./symbol.png"
 
 const images = {
@@ -16,7 +15,6 @@ const images = {
     cancelshipment,
     send,
     avatar,
-    logo,
     symbol,
 }
 

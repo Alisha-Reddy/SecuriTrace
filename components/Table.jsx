@@ -49,6 +49,7 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
                 <table className="w-full table-auto pb-10 text-sm text-left bg-white">
                     <thead className="bg-gray-100 text-gray-600 font-medium border-b">
                         <tr>
+                            <th className="py-3 px-6">Index </th>
                             <th className="py-3 px-6">Sender </th>
                             <th className="py-3 px-6">Receiver </th>
                             <th className="py-3 px-6">PickupTime </th>
@@ -62,6 +63,9 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
                     <tbody className="text-gray-600 divide-y">
                         {allShipmentsdata?.map((shipment, idx) => (
                             <tr key={idx}>
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                    {idx} + 1
+                                </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     {shipment.sender.slice(0, 15)}...
                                 </td>
@@ -78,7 +82,7 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
                                     {shipment.price} ETH
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
-                                    {convertTime(shipment.deliveryTime + shipment.pickupTime       )}
+                                    {convertTime(shipment.deliveryTime + shipment.pickupTime)}
                                 </td>
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     {shipment.isPaid ? "Completed" : "Not Completed"}
@@ -88,10 +92,9 @@ export default ({ setCreateShipmentModel, allShipmentsdata }) => {
                                         ? "PENDING"
                                         : shipment.status === 1
                                           ? "IN-TRANSIT"
-                                            : shipment.status === 2
-                                                ? "CANCELLED"
-                                                : "DELIVERED"
-                                    }
+                                          : shipment.status === 2
+                                            ? "CANCELLED"
+                                            : "DELIVERED"}
                                 </td>
                             </tr>
                         ))}
