@@ -1,7 +1,7 @@
-const contractAddresses = require("./contractAddress.json")
-const abi = require("./abi.json")
+import contractAddresses from "./contractAddresses.json"
+import abi from "./abi.json"
 
-module.exports = {
+export default {
     abi,
     contractAddresses,
 }

@@ -1,8 +1,10 @@
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useState } from "react"
 // import Web3Modal from "web3modal"
 import { ethers } from "ethers"
 import { useAccount } from "wagmi"
-import {abi, contractAddress} from "../constants"
+// import { abi } from "../constants"
+import contractAddresses from "../constants/contractAddresses.json"
+import abi from "../constants/abi.json"
 import { connect } from "@wagmi/core"
 
 export const TrackingContext = React.createContext()
@@ -11,8 +13,9 @@ export const TrackingProvider = ({ children }) => {
     const { isConnected, address } = useAccount()
     const account = useAccount()
     const chainId = account.chainId
+    console.log(chainId)
 
-    const [contractAddresses, setContractAddresses] = useState(null)
+    const [contractAddress, setContractAddress] = useState(null)
     const [contract, setContract] = useState(null)
 
     // STATE VARIABLE
@@ -21,12 +24,15 @@ export const TrackingProvider = ({ children }) => {
     // Set contract address based on chainId
     useEffect(() => {
         try {
-            if (chainId && contractAddress) {
+            console.log("Fetching contact address")
+            console.log("Contract Addresses:", contractAddresses)
+            if (chainId) {
                 console.log("chainId:", chainId)
                 const trackingAddress =
-                    chainId in contractAddress ? contractAddress[chainId][0] : null
+                    chainId in contractAddresses ? contractAddresses[chainId.toString()][0] : null
+                // const trackingAddress = 0x5fbdb2315678afecb367f032d93f642f64180aa3
                 if (trackingAddress) {
-                    setContractAddresses(trackingAddress)
+                    setContractAddress(trackingAddress)
                     console.log("Contract address:", trackingAddress)
                 }
             } else {
@@ -35,35 +41,43 @@ export const TrackingProvider = ({ children }) => {
         } catch (error) {
             console.error("Error accessing contract address:", error)
         }
-
     }, [chainId])
 
     // INITIALIZE CONTRACT INSTANCE
     useEffect(() => {
-        if (typeof window !== "undefined" && window.ethereum && contractAddresses) {
-            console.log("Using contrctAddress:", contractAddresses)
+        if (typeof window !== "undefined" && window.ethereum && contractAddress) {
+            console.log("Using contrctAddress:", contractAddress)
             const provider = new ethers.providers.Web3Provider(window.ethereum)
             const signer = provider.getSigner()
-            const trackingContract = new ethers.Contract(contractAddresses, abi, signer)
+            const trackingContract = new ethers.Contract(contractAddress, abi, signer)
 
             setContract(trackingContract)
         }
-    }, [contractAddresses])
+    }, [contractAddress])
 
     const createShipment = async (items) => {
-        console.log(items)
+        console.log("items:", items)
         const { receiver, pickupTime, distance, price } = items
-
         try {
+            console.log("Creating shipment")
+            if (!contract) {
+                console.error("Contract is not initialized")
+                return
+            }
+            console.log("Converted pickupTime:", new Date(pickupTime).getTime())
+
+            console.log("ethers.utils.parseEther(price)", ethers.utils.parseEther(price))
             const transaction = await contract.createShipment(
                 receiver,
                 new Date(pickupTime).getTime(),
                 distance,
-                ethers.utils.parseUnits(price, 18),
+                ethers.utils.parseEther(price),
                 {
-                    value: ethers.utils.parseUnits(price, 18),
+                    value: ethers.utils.parseEther(price),
+                    gasLimit: 300000,
                 },
             )
+            console.log("1")
             await transaction.wait()
             console.log("Shipment created successfully", transaction)
         } catch (error) {
@@ -73,10 +87,6 @@ export const TrackingProvider = ({ children }) => {
 
     const getAllShipment = async () => {
         try {
-            // console.log("Fetching all shipments...")
-            // const contract = await connectToContract()
-            // console.log("contract:", contract)
-
             const shipments = await contract.getAllTransactions()
             console.log("Shipments from contract:", shipments)
 
@@ -170,7 +180,6 @@ export const TrackingProvider = ({ children }) => {
     }
 
     const startShipment = async ({ receiver, index }) => {
-
         try {
             const shipment = await contract.startShipment(address, receiver, index - 1)
 
@@ -181,20 +190,19 @@ export const TrackingProvider = ({ children }) => {
         }
     }
 
-
     return (
         <TrackingContext.Provider
             value={{
-                connect,
+                currentUser: address,
                 createShipment,
                 getAllShipment,
-                getShipment,
-                getShipmentsCount,
-                startShipment,
-                cancelShipment,
                 completeShipment,
+                getShipment,
+                startShipment,
+                getShipmentsCount,
+                cancelShipment,
                 DappName,
-                currentUser: address,
+                connect,
                 isConnected,
             }}
         >
